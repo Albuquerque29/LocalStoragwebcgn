@@ -1,5 +1,5 @@
 window.onload = function(){
-    carrergarUsuariosSalvos();
+    carregarUsuariosSalvos();
 }
 
 function cadastrarUsuario(){
@@ -12,30 +12,41 @@ function cadastrarUsuario(){
             senha: senha,
         };
 
-        salvarUsuario(novoUsuario)
+        salvarUsuario(novoUsuario);
         
-        adicionarUsuarioNaLista(novoUsuario)
+        adicionarUsuarioNaLista(novoUsuario);
 
         document.getElementById("nome").value="";
         document.getElementById("senha").value="";
-    }else{
+    } else {
         alert("Preencha todos os campos do formulário.")
     }
 }
 
-function adicionarUsuarioNaLista(Usuario){
-    var Listausuario = document.getElementById("listaUsuario");
+function adicionarUsuarioNaLista(usuario){
+    var listaUsuario = document.getElementById("listarUsuario");
     var novoUsuario = document.createElement("li")
-    novoUsuario.innerHTML = `<strong> ${Usuario.nome} <strong>: ${Usuario.senha}`;
-    Listausuario.appendChild(novoUsuario)
+    novoUsuario.innerHTML = `<strong>${usuario.nome}</strong>: ${usuario.senha}`;
+    listaUsuario.appendChild(novoUsuario);
 }
 
 function salvarUsuario(usuario){
-    var usuarioSalvos = JSON.parse(localStorage.getItem("usuario")) || [];
+    var usuariosSalvos = JSON.parse(localStorage.getItem("Usuarios")) || [];
 
-    usuarioSalvos.push(usuario);
+    usuariosSalvos.push(usuario);
 
-    localStorage.setItem("Usuarios", JSON.stringify(usuarioSalvos)) || [];
+    localStorage.setItem("Usuarios", JSON.stringify(usuariosSalvos));
    
-    usuarioSalvos.forEach(adicionarUsuarioNaLista(usuario));
+    carregarUsuariosSalvos();
+}
+
+function carregarUsuariosSalvos() {
+    var usuariosSalvos = JSON.parse(localStorage.getItem("Usuarios")) || [];
+    var listaUsuario = document.getElementById("listarUsuario");
+
+    listaUsuario.innerHTML = ""; // Limpa a lista antes de carregar os usuários
+
+    usuariosSalvos.forEach(function(usuario) {
+        adicionarUsuarioNaLista(usuario);
+    });
 }
