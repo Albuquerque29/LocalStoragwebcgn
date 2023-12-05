@@ -1,0 +1,14 @@
+{
+  "name": "teste",
+  "version": "1.0.0",
+  "description": "testando local storage",
+  "main": "forms.html",
+  "scripts": {
+    "test": "serve"
+  },
+  "keywords": [
+    "[]"
+  ],
+  "author": "Arthur",
+  "license": "ISC"
+}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo local Storage</title>
+</head>
+<body>
+    
+<h1> Registra-se</h1>
+
+<form id="forms">
+
+<label for="nome">Nome
+    <input type="text" id="nome" placeholder="Insira o seu nome" autofocus required>
+</label>
+
+<label for="senha">Senha
+    <input type="text" id="senha" placeholder="Insira a sua senha" autofocus required>
+</label>
+
+<button type="button" onclick="cadastrarUsuario()">Cadastrar</button>
+</form>
+
+<h2>Usuários Registados na BASE:</h2>
+<ul id="listarUsuario"></ul>
+
+<script src="jszin.js"></script>
+</body>
+</html>
